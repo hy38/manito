@@ -23,10 +23,14 @@ public class APIExamDatalabTrend {
 //            System.out.println(yesterday);
 
             String apiURL = "https://openapi.naver.com/v1/datalab/shopping/categories";
-//            유저가 변경할 수 있는 검색조건사항들 : 카테고리
-//            검색은 무조건 어제날짜까지 1달간격으로 진행됨.
+//            유저가 변경할 수 있는 검색조건사항들 : 카테고리,
+//            검색은 무조건 2018년 8월 1일부터 어제날짜까지 1달간격으로 진행됨. 1월 16일 현재 6개월치의 데이터가 나옴.
+//            args[] = {name, param, name, param, device, age, gender}
+//            String[] age = new String[]{"10"}; => doesn't work!
+//            String age = "10"; => does work!
+            String age = args[0];
 //            String body = "{\"startDate\":\"2018-08-01\",\"endDate\":\"2019-01-15\",\"timeUnit\":\"month\",\"category\":[{\"name\":\"패션의류\",\"param\":[\"50000000\"]},{\"name\":\"화장품/미용\",\"param\":[\"50000002\"]}],\"device\":\"mo\",\"ages\":[\"20\",\"30\"],\"gender\":\"\"}";
-            String body = "{\"startDate\":\"2018-08-01\",\"endDate\":\""+yesterday+"\", \"timeUnit\":\"month\",\"category\":[{\"name\":\"패션의류\",\"param\":[\"50000000\"]},{\"name\":\"화장품/미용\",\"param\":[\"50000002\"]}],\"device\":\"mo\",\"ages\":[\"20\",\"30\"],\"gender\":\"\"}";
+            String body = "{\"startDate\":\"2018-08-01\",\"endDate\":\""+yesterday+"\", \"timeUnit\":\"month\",\"category\":[{\"name\":\"패션의류\",\"param\":[\"50000000\"]},{\"name\":\"화장품/미용\",\"param\":[\"50000002\"]}],\"device\":\"mo\",\"ages\":[\""+age+"\"],\"gender\":\"\"}";
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("POST");
@@ -55,6 +59,8 @@ public class APIExamDatalabTrend {
             }
             br.close();
             System.out.println(response.toString());
+
+
 
         } catch (Exception e) {
             System.out.println(e);

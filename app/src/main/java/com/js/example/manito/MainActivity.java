@@ -9,8 +9,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     Button btn;
 
     @Override
@@ -23,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.v("알림", "확인");
-//                NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
-//                mNaverShoppingTask.execute();
+                NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
+                mNaverShoppingTask.execute();
 
 
             }
@@ -32,16 +30,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public class NaverShoppingTask extends AsyncTask<String[], Void, String>{
-
+    public class NaverShoppingTask extends AsyncTask<String[], Void, String> {
+//  Parameters : AsyncTask<doInBackground()의 변수 종류, onProgressUpdate()에서 사용할 변수 종류, onPostExecute()에서 사용할 변수종류>
         @Override
-        public String doInBackground(String[]... String){
-//            APIExamDatalabTrend.main(new String[]{""});
+        public String doInBackground(String[]... String) {
+            APIExamDatalabTrend.main(new String[]{"10"});
             return null;
 
         }
 
         @Override
-        public void onPostExecute(String result){super.onPostExecute(result);}
+        public void onPostExecute(String result) {
+            super.onPostExecute(result);
+        }
     }
 }
