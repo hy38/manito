@@ -8,38 +8,6 @@
     tools:layout_editor_absoluteY="81dp">
 
     <CheckBox
-        android:id="@+id/checkBox20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="아니오"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.387"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.775" />
-
-    <CheckBox
-        android:id="@+id/checkBox21"
-        android:layout_width="60dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="네"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.373"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.658" />
-
-    <CheckBox
         android:id="@+id/checkBox13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -239,18 +207,11 @@
         app:layout_constraintStart_toStartOf="@+id/checkBox9"
         app:layout_constraintTop_toTopOf="@+id/checkBox11" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="115dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="152dp"
-        android:text="sns 분석 사용 "
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="입력 완료"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="362dp" />
 
 </android.support.constraint.ConstraintLayout>
