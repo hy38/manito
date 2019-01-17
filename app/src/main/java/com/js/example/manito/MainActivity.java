@@ -23,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.v("알림", "확인");
-                NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
-                mNaverShoppingTask.execute();
+//                NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
+//                mNaverShoppingTask.execute();
 
             }
 
-            public void on1(View v) {
+            public void on2(View v) {
                 Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
                 startActivity(intent);
             }
