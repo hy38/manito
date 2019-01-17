@@ -18,22 +18,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn = (Button) findViewById(R.id.button2);
+        btn = (Button) findViewById(R.id.button1);
         btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.v("알림", "확인");
+                                   @Override
+                                   public void onClick(View view) {
+                                       Log.v("알림", "확인");
 //                NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
 //                mNaverShoppingTask.execute();
 
-            }
+                                   }
 
-            public void on2(View v) {
-                Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
-                startActivity(intent);
-            }
 
-        });
+                               }
+        );
+
+
+    }
+
+    public void on2(View v) {
+        Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+        startActivity(intent);
     }
 
     public class NaverShoppingTask extends AsyncTask<String[], Void, String> {
