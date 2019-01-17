@@ -1,0 +1,8 @@
+diff a/app/src/main/java/com/js/example/manito/MainActivity.java b/app/src/main/java/com/js/example/manito/MainActivity.java	(rejected hunks)
+@@ -43,5 +43,5 @@
+         public void onPostExecute(String result) {
+             super.onPostExecute(result);
+         }
+-    }
++    }*/
+ }
