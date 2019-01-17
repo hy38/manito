@@ -1,0 +1,9 @@
+diff a/.idea/encodings.xml b/.idea/encodings.xml	(rejected hunks)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+-    <file url="PROJECT" charset="UTF-8" />
+-  </component>
+-</project>
+\ No newline at end of file
