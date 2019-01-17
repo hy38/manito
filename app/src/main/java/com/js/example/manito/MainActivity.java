@@ -20,23 +20,20 @@ public class MainActivity extends AppCompatActivity {
 
         btn = (Button) findViewById(R.id.button1);
         btn.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View view) {
-                                       Log.v("알림", "확인");
-//                NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
-//                mNaverShoppingTask.execute();
+            @Override
+            public void onClick(View view) {
+                Log.v("알림", "확인");
+                NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
+                mNaverShoppingTask.execute();
 
-                                   }
-
-
-                               }
-        );
+            }
+        });
 
 
     }
 
     public void on2(View v) {
-        Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+        Intent intent = new Intent(getApplicationContext(), Main4Activity.class);
         startActivity(intent);
     }
 

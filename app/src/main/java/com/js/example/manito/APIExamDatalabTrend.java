@@ -1,5 +1,7 @@
 package com.js.example.manito;
 
+import android.widget.CheckBox;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -28,11 +30,12 @@ public class APIExamDatalabTrend {
 //            args[] = {name, param, name, param, device, age, gender}
 //            String[] age = new String[]{"10"}; => doesn't work!
 //            String age = "10"; => does work!
+
             String age = args[0];
 //            String body = "{\"startDate\":\"2018-08-01\",\"endDate\":\"2019-01-15\",\"timeUnit\":\"month\",\"category\":[{\"name\":\"패션의류\",\"param\":[\"50000000\"]},{\"name\":\"화장품/미용\",\"param\":[\"50000002\"]}],\"device\":\"mo\",\"ages\":[\"20\",\"30\"],\"gender\":\"\"}";
-            String body = "{\"startDate\":\"2018-08-01\",\"endDate\":\""+yesterday+"\", \"timeUnit\":\"month\",\"category\":[{\"name\":\"패션의류\",\"param\":[\"50000000\"]},{\"name\":\"화장품/미용\",\"param\":[\"50000002\"]}],\"device\":\"mo\",\"ages\":[\""+age+"\"],\"gender\":\"\"}";
+            String body = "{\"startDate\":\"2018-08-01\",\"endDate\":\"" + yesterday + "\", \"timeUnit\":\"month\",\"category\":[{\"name\":\"패션의류\",\"param\":[\"50000000\"]},{\"name\":\"화장품/미용\",\"param\":[\"50000002\"]}],\"device\":\"mo\",\"ages\":[\"" + age + "\"],\"gender\":\"\"}";
             URL url = new URL(apiURL);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
             con.setRequestProperty("X-Naver-Client-Id", clientId);
             con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
@@ -46,7 +49,7 @@ public class APIExamDatalabTrend {
 
             int responseCode = con.getResponseCode();
             BufferedReader br;
-            if(responseCode==200) { // 정상 호출
+            if (responseCode == 200) { // 정상 호출
                 br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
             } else {  // 에러 발생
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "UTF-8"));
@@ -59,7 +62,6 @@ public class APIExamDatalabTrend {
             }
             br.close();
             System.out.println(response.toString());
-
 
 
         } catch (Exception e) {
