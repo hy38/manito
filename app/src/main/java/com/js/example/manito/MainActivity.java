@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.v("알림", "확인");
-                NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
-                mNaverShoppingTask.execute();
+//                NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
+//                mNaverShoppingTask.execute();
 
 
             }
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public class NaverShoppingTask extends AsyncTask<String[], Void, String> {
+   /* public class NaverShoppingTask extends AsyncTask<String[], Void, String> {
 //  Parameters : AsyncTask<doInBackground()의 변수 종류, onProgressUpdate()에서 사용할 변수 종류, onPostExecute()에서 사용할 변수종류>
         @Override
         public String doInBackground(String[]... String) {
@@ -43,5 +43,5 @@ public class MainActivity extends AppCompatActivity {
         public void onPostExecute(String result) {
             super.onPostExecute(result);
         }
-    }
+    }*/
 }
