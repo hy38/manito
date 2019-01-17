@@ -11,13 +11,13 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button btn;
+    // Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+/*
         btn = (Button) findViewById(R.id.button2);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,15 +25,15 @@ public class MainActivity extends AppCompatActivity {
                 Log.v("알림", "확인");
 //                NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
 //                mNaverShoppingTask.execute();
+*/
+    }
 
-            }
+    public void on2(View v) {
+        Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+        startActivity(intent);
+    }
 
-            public void on1(View v) {
-                Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
-                startActivity(intent);
-            }
-
-        });
+}
 
 /*
         public class NaverShoppingTask extends AsyncTask<String[], Void, String> {
@@ -52,5 +52,3 @@ public class MainActivity extends AppCompatActivity {
         }
 
     */
-    }
-}
