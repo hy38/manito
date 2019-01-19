@@ -111,13 +111,6 @@ public class Main2Activity extends AppCompatActivity implements CompoundButton.O
         cb_Name_Foods.setOnCheckedChangeListener(this);
         cb_Name_LifeHealth.setOnCheckedChangeListener(this);
         cb_Name_TripCulture.setOnCheckedChangeListener(this);
-
-        // Param1
-
-
-        // Param2
-
-
     }   //  end of onCreate
 
     @Override
