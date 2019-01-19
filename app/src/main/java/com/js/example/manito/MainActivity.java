@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         //  Parameters : AsyncTask<doInBackground()의 변수 종류, onProgressUpdate()에서 사용할 변수 종류, onPostExecute()에서 사용할 변수종류>
         @Override
         public String doInBackground(String[]... String) {
-            APIExamDatalabTrend.main(new String[]{"10"});
+            APIExamDatalabTrend.main(new String[]{"10", "f", "패션의류", "화장품/미용", "50000000", "50000002"});
             return null;
         }
 
