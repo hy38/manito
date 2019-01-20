@@ -61,6 +61,7 @@ public class APIExamDatalabTrend {
             br.close();
             System.out.println(response.toString());
 
+            JSONProcessing processing = new JSONProcessing(response.toString());
 
         } catch (Exception e) {
             System.out.println(e);
