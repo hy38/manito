@@ -5,7 +5,9 @@ public class JSONProcessing {
     private String response;
 
     /* Constructor */
-    public JSONProcessing(){}
+    public JSONProcessing() {
+    }
+
     public JSONProcessing(String API_Data) {
         response = API_Data;
     }
