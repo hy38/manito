@@ -18,12 +18,6 @@ public class Main2Activity extends AppCompatActivity {
     String[] args = new String[6];
     //  Age
     RadioGroup rg;
-    /*CheckBox cb_Age_10;
-    CheckBox cb_Age_20;
-    CheckBox cb_Age_30;
-    CheckBox cb_Age_40;
-    CheckBox cb_Age_50;
-    CheckBox cb_Age_60_plus;*/
     // Gender
     CheckBox cb_Gender_f;
     CheckBox cb_Gender_m;
@@ -45,21 +39,6 @@ public class Main2Activity extends AppCompatActivity {
     boolean genderFlag;
 
     /* End of Variables */
-
-    public class NaverShoppingTask extends AsyncTask<String[], Void, String> {
-        //  Parameters : AsyncTask<doInBackground()의 변수 종류, onProgressUpdate()에서 사용할 변수 종류, onPostExecute()에서 사용할 변수종류>
-        @Override
-        public String doInBackground(String[]... String) {
-//            APIExamDatalabTrend.main(new String[]{"10"});
-            APIExamDatalabTrend.main(args);
-            return null;
-        }
-
-        @Override
-        public void onPostExecute(String result) {
-            super.onPostExecute(result);
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,26 +96,27 @@ public class Main2Activity extends AppCompatActivity {
                             args[2] = "패션의류";
                             args[4] = "50000000";
                         }
-                        if (cb_Name_Cosmetics.isChecked()) {
+                        else if (cb_Name_Cosmetics.isChecked()) {
                             args[2] = "화장품/미용";
                             args[4] = "50000002";
                         }
-                        if (cb_Name_Foods.isChecked()) {
+                        else if (cb_Name_Foods.isChecked()) {
                             args[2] = "식품";
                             args[4] = "50000006";
                         }
-                        if (cb_Name_LifeHealth.isChecked()) {
+                        else if (cb_Name_LifeHealth.isChecked()) {
                             args[2] = "생활/건강";
                             args[4] = "50000008";
                         }
-                        if (cb_Name_TripCulture.isChecked()) {
+                        else if (cb_Name_TripCulture.isChecked()) {
                             args[2] = "여행/문화";
                             args[4] = "50000009";
                         }
 
                         nameFlag = true;
-                    } else if (/*args[2] != null && */args[3] == null) {  //  args[2]가 채워져있고, args[3]이 비어있으면,
-                        if (cb_Name_FashionClothings.isChecked() && !args[2].equals("패션잡화")) {
+                    }
+                    if (args[2] != null && args[3] == null) {  //  args[2]가 채워져있고, args[3]이 비어있으면,
+                        if (cb_Name_FashionClothings.isChecked() && !args[2].equals("패션의류")) {
                             args[3] = "패션의류";    //  체크가 되어있고, args[2]에 이미 저장되어있지 않으면
                             args[5] = "50000000";
                         }
@@ -162,10 +142,13 @@ public class Main2Activity extends AppCompatActivity {
                         throw new IOException();
                     }
 
+                    for(int i=0; i<args.length; i++) {
+                        System.out.println(args[i]);
+                    }
+
                 } catch (IOException e) {
                     System.out.println("CheckBox Error");
                 }
-
 
                 if (!ageFlag) System.out.println("나이를 선택하세요.");
                 if (!genderFlag) System.out.println("성별을 선택하세요.");
@@ -179,4 +162,18 @@ public class Main2Activity extends AppCompatActivity {
         }); //  end setOnClickListener
 
     }   //  end of onCreate
-}
+
+    public class NaverShoppingTask extends AsyncTask<String[], Void, String> {
+        //  Parameters : AsyncTask<doInBackground()의 변수 종류, onProgressUpdate()에서 사용할 변수 종류, onPostExecute()에서 사용할 변수종류>
+        @Override
+        public String doInBackground(String[]... String) {
+            APIExamDatalabTrend.main(args);
+            return null;
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            super.onPostExecute(result);
+        }
+    }   //  end of NaverShoppingTask
+}   //  end of Main2Activity.java

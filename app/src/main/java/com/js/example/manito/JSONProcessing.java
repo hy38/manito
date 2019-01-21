@@ -1,51 +1,77 @@
 package com.js.example.manito;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class JSONProcessing {
     /* Variables */
     private String response;
-
-    /* Constructor */
-    public JSONProcessing() {
-    }
-
-    public JSONProcessing(String API_Data) {
-        response = API_Data;
+    private static String yesterday;    //  remove static keyword when deleting main
+    private int[] returnArray = new int[2]; //  index 0 : big, index 1 : small
+    private int biggerCategory = 0, smallerCategory = 0;    //  default value == 0
+    /* Constructors */
+    public JSONProcessing(String API_Data, String yesterday) {
+        this.response = API_Data;
+        this.yesterday = yesterday;
     }
 
     /* Methods */
-    public static void main(String[] args) {
-        JSONProcessing a = new JSONProcessing();
-        String testStr = "{\"startDate\":\"2018-08-01\"," +
-                "\"endDate\":\"2019-01-19\"," +
-                "\"timeUnit\":\"month\"," +
-                "\"results\":[{\"title\":\"\",\"category\":[\"50000006\"],\"data\":[{\"period\":\"2018-08-01\",\"ratio\":85.09753},{\"period\":\"2018-09-01\",\"ratio\":97.62581},{\"period\":\"2018-10-01\",\"ratio\":94.91993},{\"period\":\"2018-11-01\",\"ratio\":98.58082},{\"period\":\"2018-12-01\",\"ratio\":100},{\"period\":\"2019-01-01\",\"ratio\":82.20644}]}," +
-                "{\"title\":\"�/8T\",\"category\":[\"50000009\"],\"data\":[{\"period\":\"2018-08-01\",\"ratio\":30.54581},{\"period\":\"2018-09-01\",\"ratio\":21.46524},{\"period\":\"2018-10-01\",\"ratio\":19.55394},{\"period\":\"2018-11-01\",\"ratio\":20.29133},{\"period\":\"2018-12-01\",\"ratio\":23.92203},{\"period\":\"2019-01-01\",\"ratio\":16.11354}]}]}";
+    public String todayDate(){
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
 
-//        a.JSONParse();
-//        String results = testStr.split("\"results\"")[0];
+        cal.add(cal.DATE, 1);
+        String today = date.format(cal.getTime());
+        return  today;
+    }
+    public int[] returnBigAndSmallCategories(String[] args) {
 
-//        String yesterdayTest = "\"2019-01-01\"";
-//
-//        String startDate = testStr.split(yesterdayTest)[0];
-//        String test = testStr.split("}")[1];
-//        System.out.println(startDate);
-//        System.out.println(test);
-        /*String startDate = testStr.split(",")[0];
-        String endDate = testStr.split(",")[1];
-        String timeUnit = testStr.split(",")[2];
-        String result1 = testStr.split("\"title\" :")[0];
-        String result2 = testStr.split("}\"")[0];
+//        String prefix = "{\"startDate\":\"2018-08-01\",\"endDate\":\"" + yesterday + "\", \"timeUnit\":\"month\"";
+        String prefix = "{\"startDate\":\"2018-08-01\",\"endDate\":\"" + todayDate() + "\",\"timeUnit\":\"month\"";
+//        String prefix = "{\"startDate\":\"2018-08-01\",\"endDate\":\"2019-01-19\",\"timeUnit\":\"month\"";
+        String parts[], string_Ratio1, string_Ratio2;
+        float float_ratio1, float_ratio2;
+       /* if (testStr.startsWith(prefix)) {   //  1월의 ratio들의 값을 구하는 과정.
+            testStr = testStr.substring(prefix.length());
+            parts = testStr.split(",");*/
+        if (response.startsWith(prefix)) {   //  1월의 ratio들의 값을 구하는 과정.
+            response = response.substring(prefix.length());
+            parts = response.split(",");
 
-        System.out.println(startDate);
-        System.out.println(endDate);
-        System.out.println(timeUnit);
-        System.out.println(result1);
-        System.out.println(result2);*/
+            /*
+              ratio값을 substring함수를 이용하여 float값만 파싱
 
-//        JSONParser parser = new JSONParser();
-//        JSONObject json = (JSONObject) parser.parse(stringToParse);
-//        Player p = g.fromJson(jsonString, Player.class)
+              parts[14] == 첫번째 ratio (2019년 1월기준)
+              parts[28] == 두번째 ratio (2019년 1월기준)
+              나중에 수식화해야함. yesterday의 month값과 2018년 8월의 month값의 차이 이용하여 수식화.
+            */
+            string_Ratio1 = parts[14].substring(8, 12);
+            string_Ratio2 = parts[28].substring(8, 12);
 
+            //  String값을 float으로 변환
+            float_ratio1 = Float.parseFloat(string_Ratio1);
+            float_ratio2 = Float.parseFloat(string_Ratio2);
+
+            //  float이 잘 변환되었는지 test
+            System.out.println(float_ratio1);
+            System.out.println(float_ratio2);
+
+            //  float끼리의 크기 비교
+            //  args[4] == param1, args[5] == param2
+
+            if (float_ratio1 >= float_ratio2) {
+                returnArray[0] = biggerCategory = Integer.parseInt(args[4]);
+                returnArray[1] = smallerCategory = Integer.parseInt(args[5]);
+
+            } else if (float_ratio1 < float_ratio2) {
+                returnArray[0] = biggerCategory = Integer.parseInt(args[5]);
+                returnArray[1] = smallerCategory = Integer.parseInt(args[4]);
+            }
+
+            System.out.println(biggerCategory);
+            System.out.println(smallerCategory);
+        }
+        return returnArray;
 
     }
 }

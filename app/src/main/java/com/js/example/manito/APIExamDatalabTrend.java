@@ -61,7 +61,12 @@ public class APIExamDatalabTrend {
             br.close();
             System.out.println(response.toString());
 
-            JSONProcessing processing = new JSONProcessing(response.toString());
+            int[] bigAndSmall;
+            JSONProcessing processing = new JSONProcessing(response.toString(), yesterday);
+            bigAndSmall = processing.returnBigAndSmallCategories(args);
+
+//            System.out.println(bigAndSmall[0]);
+//            System.out.println(bigAndSmall[1]);
 
         } catch (Exception e) {
             System.out.println(e);
