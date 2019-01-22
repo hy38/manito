@@ -1,5 +1,6 @@
 package com.js.example.manito;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,6 +40,11 @@ public class Main2Activity extends AppCompatActivity {
     boolean genderFlag;
 
     /* End of Variables */
+
+//    public void on111(View v) {
+//        Intent intent = new Intent(getApplicationContext(), Main6Activity.class);
+//        startActivity(intent);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,20 +101,16 @@ public class Main2Activity extends AppCompatActivity {
                         if (cb_Name_FashionClothings.isChecked()) {
                             args[2] = "패션의류";
                             args[4] = "50000000";
-                        }
-                        else if (cb_Name_Cosmetics.isChecked()) {
+                        } else if (cb_Name_Cosmetics.isChecked()) {
                             args[2] = "화장품/미용";
                             args[4] = "50000002";
-                        }
-                        else if (cb_Name_Foods.isChecked()) {
+                        } else if (cb_Name_Foods.isChecked()) {
                             args[2] = "식품";
                             args[4] = "50000006";
-                        }
-                        else if (cb_Name_LifeHealth.isChecked()) {
+                        } else if (cb_Name_LifeHealth.isChecked()) {
                             args[2] = "생활/건강";
                             args[4] = "50000008";
-                        }
-                        else if (cb_Name_TripCulture.isChecked()) {
+                        } else if (cb_Name_TripCulture.isChecked()) {
                             args[2] = "여행/문화";
                             args[4] = "50000009";
                         }
@@ -142,7 +144,7 @@ public class Main2Activity extends AppCompatActivity {
                         throw new IOException();
                     }
 
-                    for(int i=0; i<args.length; i++) {
+                    for (int i = 0; i < args.length; i++) {
                         System.out.println(args[i]);
                     }
 
@@ -157,6 +159,9 @@ public class Main2Activity extends AppCompatActivity {
                     NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
                     mNaverShoppingTask.execute();
                 }
+
+                Intent intent = new Intent(getApplicationContext(), Main6Activity.class);
+                startActivity(intent);
 
             }   // end onClick
         }); //  end setOnClickListener
@@ -176,4 +181,7 @@ public class Main2Activity extends AppCompatActivity {
             super.onPostExecute(result);
         }
     }   //  end of NaverShoppingTask
+
+
+
 }   //  end of Main2Activity.java
