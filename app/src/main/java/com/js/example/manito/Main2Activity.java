@@ -39,12 +39,30 @@ public class Main2Activity extends AppCompatActivity {
     boolean nameFlag;
     boolean genderFlag;
 
+    String[] bigSmall;
     /* End of Variables */
 
 //    public void on111(View v) {
 //        Intent intent = new Intent(getApplicationContext(), Main6Activity.class);
 //        startActivity(intent);
 //    }
+
+/*    public class NaverShoppingTask extends AsyncTask<String[], Void, String> {  //  API 호출 helper class
+        //  Parameters : AsyncTask<doInBackground()의 변수 종류, onProgressUpdate()에서 사용할 변수 종류, onPostExecute()에서 사용할 변수종류>
+        @Override
+        public String doInBackground(String[]... String) {
+//            APIExamDatalabTrend.main(args); //  args를 넘겨주면서 API 호출
+            APIExamDatalabTrend API = new APIExamDatalabTrend();
+            bigSmall = API.APIAccess(args);
+
+            return null;
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            super.onPostExecute(result);
+        }
+    }   //  end of NaverShoppingTask*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,36 +170,25 @@ public class Main2Activity extends AppCompatActivity {
                     System.out.println("CheckBox Error");
                 }
 
-                if (!ageFlag) System.out.println("나이를 선택하세요.");
-                if (!genderFlag) System.out.println("성별을 선택하세요.");
-                if (!nameFlag) System.out.println("관심사를 선택하세요.");
-                if (ageFlag && genderFlag && nameFlag) {
-                    NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
-                    mNaverShoppingTask.execute();
-                }
+//                if (!ageFlag) System.out.println("나이를 선택하세요.");
+//                if (!genderFlag) System.out.println("성별을 선택하세요.");
+//                if (!nameFlag) System.out.println("관심사를 선택하세요.");
+//                if (ageFlag && genderFlag && nameFlag) {
+
+//                    NaverShoppingTask mNaverShoppingTask = new NaverShoppingTask();
+//                    mNaverShoppingTask.execute();
+
+//                }
 
                 Intent intent = new Intent(getApplicationContext(), Main6Activity.class);
+                //  Main6Activity에 크기별 카테고리 cID 배열을 전달.
+                intent.putExtra("args", args);
+                intent.putExtra("big_Small", bigSmall);
                 startActivity(intent);
 
             }   // end onClick
         }); //  end setOnClickListener
 
     }   //  end of onCreate
-
-    public class NaverShoppingTask extends AsyncTask<String[], Void, String> {
-        //  Parameters : AsyncTask<doInBackground()의 변수 종류, onProgressUpdate()에서 사용할 변수 종류, onPostExecute()에서 사용할 변수종류>
-        @Override
-        public String doInBackground(String[]... String) {
-            APIExamDatalabTrend.main(args);
-            return null;
-        }
-
-        @Override
-        public void onPostExecute(String result) {
-            super.onPostExecute(result);
-        }
-    }   //  end of NaverShoppingTask
-
-
 
 }   //  end of Main2Activity.java

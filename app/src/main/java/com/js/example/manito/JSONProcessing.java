@@ -7,8 +7,8 @@ public class JSONProcessing {
     /* Variables */
     private String response;
     private static String yesterday;    //  remove static keyword when deleting main
-    private int[] returnArray = new int[2]; //  index 0 : big, index 1 : small
-    private int biggerCategory = 0, smallerCategory = 0;    //  default value == 0
+    private String[] returnArray = new String[2]; //  index 0 : big, index 1 : small
+//    private int biggerCategory = 0, smallerCategory = 0;    //  default value == 0
     /* Constructors */
     public JSONProcessing(String API_Data, String yesterday) {
         this.response = API_Data;
@@ -20,11 +20,11 @@ public class JSONProcessing {
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
 
-        cal.add(cal.DATE, 1);
+        cal.add(cal.DATE, 0);
         String today = date.format(cal.getTime());
         return  today;
     }
-    public int[] returnBigAndSmallCategories(String[] args) {
+    public String[] returnBigAndSmallCategories(String[] args) {
 
 //        String prefix = "{\"startDate\":\"2018-08-01\",\"endDate\":\"" + yesterday + "\", \"timeUnit\":\"month\"";
         String prefix = "{\"startDate\":\"2018-08-01\",\"endDate\":\"" + todayDate() + "\",\"timeUnit\":\"month\"";
@@ -60,16 +60,20 @@ public class JSONProcessing {
             //  args[4] == param1, args[5] == param2
 
             if (float_ratio1 >= float_ratio2) {
-                returnArray[0] = biggerCategory = Integer.parseInt(args[4]);
-                returnArray[1] = smallerCategory = Integer.parseInt(args[5]);
+//                returnArray[0] = biggerCategory = args[4];
+//                returnArray[1] = smallerCategory = Integer.parseInt(args[5]);
+                returnArray[0] = args[4];
+                returnArray[1] = args[5];
 
             } else if (float_ratio1 < float_ratio2) {
-                returnArray[0] = biggerCategory = Integer.parseInt(args[5]);
-                returnArray[1] = smallerCategory = Integer.parseInt(args[4]);
+//                returnArray[0] = biggerCategory = Integer.parseInt(args[5]);
+//                returnArray[1] = smallerCategory = Integer.parseInt(args[4]);
+                returnArray[0] = args[5];
+                returnArray[1] = args[4];
             }
 
-            System.out.println(biggerCategory);
-            System.out.println(smallerCategory);
+//            System.out.println(biggerCategory);
+//            System.out.println(smallerCategory);
         }
         return returnArray;
 

@@ -10,7 +10,8 @@ import java.util.Calendar;
 
 public class APIExamDatalabTrend {
 
-    public static void main(String[] args) {
+    //    public static void main(String[] args) {
+    public String[] APIAccess(String[] args) {
         String clientId = "DwcaibyBwIZ1e6LhFXI5";//애플리케이션 클라이언트 아이디 값";
         String clientSecret = "lqvMc6UEBC";//애플리케이션 클라이언트 시크릿 값";
 
@@ -31,7 +32,7 @@ public class APIExamDatalabTrend {
 
             String age = args[0];
 //            String body = "{\"startDate\":\"2018-08-01\",\"endDate\":\"2019-01-15\",\"timeUnit\":\"month\",\"category\":[{\"name\":\"패션의류\",\"param\":[\"50000000\"]},{\"name\":\"화장품/미용\",\"param\":[\"50000002\"]}],\"device\":\"mo\",\"ages\":[\"20\",\"30\"],\"gender\":\"\"}";
-            String body = "{\"startDate\":\"2018-08-01\",\"endDate\":\"" + yesterday + "\", \"timeUnit\":\"month\",\"category\":[{\"name\":\"" + args[2] + "\",\"param\":[\"" + args[4] + "\"]},{\"name\":\"" + args[3] + "\",\"param\":[\"" + args[5] + "\"]}],\"device\":\"mo\",\"ages\":[\"" + age + "\"],\"gender\":\""+args[1]+"\"}";
+            String body = "{\"startDate\":\"2018-08-01\",\"endDate\":\"" + yesterday + "\", \"timeUnit\":\"month\",\"category\":[{\"name\":\"" + args[2] + "\",\"param\":[\"" + args[4] + "\"]},{\"name\":\"" + args[3] + "\",\"param\":[\"" + args[5] + "\"]}],\"device\":\"mo\",\"ages\":[\"" + age + "\"],\"gender\":\"" + args[1] + "\"}";
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
@@ -61,15 +62,18 @@ public class APIExamDatalabTrend {
             br.close();
             System.out.println(response.toString());
 
-            int[] bigAndSmall;
+            String[] bigAndSmall;  //  큰 카테고리와 작은 카테고리의 cID를 받아온다. index 0 : big, the other : small.
             JSONProcessing processing = new JSONProcessing(response.toString(), yesterday);
             bigAndSmall = processing.returnBigAndSmallCategories(args);
 
+            return bigAndSmall;
 //            System.out.println(bigAndSmall[0]);
 //            System.out.println(bigAndSmall[1]);
 
         } catch (Exception e) {
             System.out.println(e);
         }
+        return null;
     }
 }
+//}
